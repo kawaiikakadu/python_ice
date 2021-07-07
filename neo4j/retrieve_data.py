@@ -1,46 +1,5 @@
 import csv
-
-
-class Human:
-    def __init__(self):
-        self.firstname = ''
-        self.lastname = ''
-        self.school = ''
-        self.number = ''
-        self.email = ''
-
-
-class Binome:
-    def __init__(self):
-        self.human1 = Human()
-        self.human2 = Human()
-        self.human1.school = "EPITA"
-        self.human2.school = "EPITA"
-
-
-class Pioupiou:
-    def __init__(self):
-        self.human = Human()
-        self.human.school = "ISG"
-        self.campus = ''
-
-
-class Sherpa:
-    def __init__(self):
-        self.firstname = ''
-        self.lastname = ''
-        self.school = "ISG"
-        self.email = ''
-        self.campus = ''
-
-
-class Project:
-    def __init__(self):
-        self.project_name = ''
-        self.binome = Binome()
-        self.sherpas = [Sherpa()]
-
-
+from Python_class import *
 # read a csv file and return a list of lines
 def read_csv(file):
     content = []
