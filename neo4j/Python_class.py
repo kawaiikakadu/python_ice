@@ -35,5 +35,5 @@ class Project:
     def __init__(self):
         self.project_name = ''
         self.binome = Binome()
-        self.sherpas = [Sherpa()]
-        self.students = [Pioupiou()]
+        self.sherpas = []
+        self.students = []
