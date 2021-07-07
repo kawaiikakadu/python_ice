@@ -32,6 +32,16 @@ class Project(StructuredNode):
     binome = RelationshipFrom(Binome, 'LEADERS')
 
 
+class Sherpa4j(StructuredNode):
+    firstname = StringProperty(unique_index=True)
+    lastname = StringProperty(unique_index=True)
+    campus = StringProperty(unique_index=True)
+    email = StringProperty(unique_index=True)
+
+    school = RelationshipTo(School, 'WORKS_AT')
+    projet = RelationshipTo(Project, "WORKS_ON")
+
+
 # clear all categories of nodes in the db
 def clear_db():
     humans = Human4j.nodes.all()

@@ -18,10 +18,27 @@ class Binome:
         self.human2.school = "EPITA"
 
 
+class Pioupiou:
+    def __init__(self):
+        self.human = Human()
+        self.human.school = "ISG"
+        self.campus = ''
+
+
+class Sherpa:
+    def __init__(self):
+        self.firstname = ''
+        self.lastname = ''
+        self.school = "ISG"
+        self.email = ''
+        self.campus = ''
+
+
 class Project:
     def __init__(self):
         self.project_name = ''
         self.binome = Binome()
+        self.sherpas = [Sherpa()]
 
 
 # read a csv file and return a list of lines
