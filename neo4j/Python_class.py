@@ -28,7 +28,6 @@ class Sherpa:
         self.human = Human()
         self.human.school = "ISG"
         self.campus = ''
-        self.team = ''
         self.mission = ''
 
 
