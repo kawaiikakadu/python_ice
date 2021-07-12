@@ -25,8 +25,6 @@ class Sherpa4j(StructuredNode):
     campus = StringProperty(unique_index=True)
     school = StringProperty(unique_index=True)
 
-    # projet = RelationshipTo(Project, "WORKS_ON")
-
 
 class Pioupiou4j(StructuredNode):
     firstname = StringProperty(unique_index=True)
@@ -37,12 +35,19 @@ class Pioupiou4j(StructuredNode):
     team = StringProperty(unique_index=True)
     school = StringProperty(unique_index=True)
 
-    # projet = RelationshipTo(Project, "WORKS_ON")
+
+class Partenaire4j(StructuredNode):
+    firstname = StringProperty(unique_index=True)
+    lastname = StringProperty(unique_index=True)
+    job = StringProperty(unique_index=True)
+    email = StringProperty(unique_index=True)
+    number = StringProperty(unique_index=True)
 
 
 class Project4j(StructuredNode):
     name = StringProperty(unique_index=True)
 
     binome = RelationshipFrom(Binome4j, 'LEADERS')
+    partenaire = RelationshipFrom(Partenaire4j, 'CLIENT')
     sherpas = RelationshipFrom(Sherpa4j, 'SHERPA')
     students = RelationshipFrom(Pioupiou4j, 'WORKS_ON')

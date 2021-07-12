@@ -1,5 +1,5 @@
 from neo4j_class import *
-from retrieve_data_isg import *
+from retrieve_data_partenaires import *
 
 config.DATABASE_URL = 'bolt://neo4j:password@localhost:7687'
 db.set_connection('bolt://neo4j:password@localhost:7687')
@@ -22,6 +22,9 @@ def clear_db():
     students = Pioupiou4j.nodes.all()
     for piou in students:
         piou.delete()
+    partenaires = Partenaire4j.nodes.all()
+    for part in partenaires:
+        part.delete()
 
 
 if __name__ == '__main__':
@@ -31,6 +34,7 @@ if __name__ == '__main__':
     # projects list
     p_list = create_project_list(read_csv(file))
     parse_excel(p_list)
+    parse_excel_partenaire(p_list)
 
     clear_db()
 
@@ -84,3 +88,12 @@ if __name__ == '__main__':
                 school=student.human.school
             ).save()
             p.students.connect(s)
+
+        part = Partenaire4j(
+            firstname=project.partenaire.firstname,
+            lastname=project.partenaire.lastname,
+            number=project.partenaire.number,
+            email=project.partenaire.email,
+            job=project.partenaire.job,
+        ).save()
+        p.partenaire.connect(part)
