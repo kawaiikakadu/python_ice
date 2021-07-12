@@ -10,10 +10,10 @@ def clear_db():
     humans = Human4j.nodes.all()
     for h in humans:
         h.delete()
-    binomes = Binome.nodes.all()
+    binomes = Binome4j.nodes.all()
     for b in binomes:
         b.delete()
-    projects = Project.nodes.all()
+    projects = Project4j.nodes.all()
     for p in projects:
         p.delete()
     sherpas = Sherpa4j.nodes.all()
@@ -27,9 +27,10 @@ def clear_db():
 if __name__ == '__main__':
     # CSV containing the list of epita binomes and their infos
     file = "ressources/Liste leads.csv"
+    wb = openpyxl.load_workbook("ressources/effectif_campus_clean.xlsx")
     # projects list
     p_list = create_project_list(read_csv(file))
-    parse_sheet(p_list)
+    parse_excel(p_list)
 
     clear_db()
 
@@ -52,13 +53,13 @@ if __name__ == '__main__':
         ).save()
 
         # create a binome node and its relations to the 2 humans
-        binome = Binome().save()
+        binome = Binome4j().save()
 
         binome.human1.connect(h1)
         binome.human2.connect(h2)
 
         # create a project node and a relation with the associated binome
-        p = Project(name=project.project_name).save()
+        p = Project4j(name=project.project_name).save()
         p.binome.connect(binome)
 
         for sherpa in project.sherpas:

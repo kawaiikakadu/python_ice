@@ -10,7 +10,7 @@ class Human4j(StructuredNode):
     school = StringProperty(unique_index=True)
 
 
-class Binome(StructuredNode):
+class Binome4j(StructuredNode):
     uid = UniqueIdProperty()
 
     human1 = Relationship(Human4j, 'LEADER')
@@ -40,9 +40,9 @@ class Pioupiou4j(StructuredNode):
     # projet = RelationshipTo(Project, "WORKS_ON")
 
 
-class Project(StructuredNode):
+class Project4j(StructuredNode):
     name = StringProperty(unique_index=True)
 
-    binome = RelationshipFrom(Binome, 'LEADERS')
+    binome = RelationshipFrom(Binome4j, 'LEADERS')
     sherpas = RelationshipFrom(Sherpa4j, 'SHERPA')
     students = RelationshipFrom(Pioupiou4j, 'WORKS_ON')

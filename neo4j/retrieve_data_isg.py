@@ -2,11 +2,13 @@ import openpyxl
 from Python_class import *
 from retrieve_data import *
 
+
 def count_row(sheet):
     i = 1
-    while(sheet.cell(i,1).value != None):
+    while (sheet.cell(i, 1).value != None):
         i += 1
     return i - 1
+
 
 def test_project(projects, project):
     for p in projects:
@@ -28,19 +30,16 @@ def check_sherpa(project, sherpa):
     return False
 
 
-def parse_sheet(projects,sheet,sheetname):
-    print(sheet)
+def parse_sheet(projects, sheet, sheetname):
     row = count_row(sheet)
     col = sheet.max_column
-    print(row)
-    print(col)
     for i in range(2, row):
         current_project = ''
         index = 0
         sherpa1 = Sherpa()
         sherpa2 = Sherpa()
         student = Pioupiou()
-        for j in range(2, col - 1):
+        for j in range(2, col + 1):
             if (j == 2):
                 student.human.lastname = sheet.cell(i, j).value
             if (j == 3):
@@ -59,7 +58,7 @@ def parse_sheet(projects,sheet,sheetname):
                 projects[index].students.append(student)
                 if (sheet.cell(i, j).value != current_project):
                     current_project = sheet.cell(i, j).value
-                index = get_project_index(projects,current_project)
+                index = get_project_index(projects, current_project)
             if (j == 7):
                 sherpa1.human.lastname = sheet.cell(i, j).value.split(" ")[0]
                 sherpa1.human.firstname = sheet.cell(i, j).value.split(" ")[1]
@@ -74,33 +73,26 @@ def parse_sheet(projects,sheet,sheetname):
                     projects[index].sherpas.append(sherpa2)
             if (j == 9):
                 student.mission = sheet.cell(i, j).value
-                sherpa1.mission = sheet.cell(i , j).value
-                sherpa2.mission = sheet.cell(i , j).value
+                sherpa1.mission = sheet.cell(i, j).value
+                sherpa2.mission = sheet.cell(i, j).value
     return projects
+
 
 def print_projects(projects):
     for project in projects:
-        print("Nom du projet : ",project.project_name)
+        print("Nom du projet : ", project.project_name)
         print("Nombre de sherpa : ", len(project.sherpas))
         for sherpa in project.sherpas:
-            print("Sherpa : ",sherpa.human.firstname)
+            print("Sherpa : ", sherpa.human.firstname)
         for student in project.students:
-            print("Etudiant : " ,student.human.firstname)
+            print("Etudiant : ", student.human.firstname)
         print('\n')
 
+
 def parse_excel(projects):
-    wb = openpyxl.load_workbook("ressources/effectif_campus.xlsx")
-    for n in range (0,5):
+    wb = openpyxl.load_workbook("ressources/effectif_campus_clean.xlsx")
+    for n in range(0, 6):
         sheet = wb.worksheets[n]
         sheetname = wb.sheetnames[n].split('_')[1]
-        print("SHEETNAME : ",sheetname)
-        parse_sheet(projects,sheet,sheetname)
+        parse_sheet(projects, sheet, sheetname)
     return projects
-
-if __name__ == '__main__':
-    file = "ressources/Liste leads.csv"
-    wb = openpyxl.load_workbook("ressources/effectif_campus.xlsx")
-    # projects list
-    p_list = create_project_list(read_csv(file))
-    print_projects(parse_excel(p_list))
-
