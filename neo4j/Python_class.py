@@ -48,3 +48,4 @@ class Partenaire:
         self.job = ''
         self.email = ''
         self.number = ''
+
