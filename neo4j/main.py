@@ -33,7 +33,7 @@ def clear_db():
 
 # function that init the db with general data not in any ressources given
 def init_data():
-    ps = Planete_Solidaire().save()
+    ps = Planete_Solidaire(name="Planète Solidaire").save()
 
     maya = Human4j(
         firstname='Maya',
@@ -55,30 +55,30 @@ def init_data():
         number='0662739612',
         email='michel.sasson@epita.fr',
         school='EPITA'
-    )
+    ).save()
     cedric = Human4j(
         firstname='Cédric',
         lastname='Joly',
         number='',
         email='cedric.joly@epita.fr',
         school='EPITA'
-    )
+    ).save()
     caroline = Human4j(
         firstname='Caroline',
         lastname='De Paoli',
         number='',
         email='caroline.depaoli@isg.fr',
         school='ISG'
-    )
+    ).save()
 
     binome = Binome4j().save()
-    binome.human1 = mailinh
-    binome.human2 = maya
+    binome.human1.connect(mailinh)
+    binome.human2.connect(maya)
 
-    ps.binome = binome
-    ps.michel = michel
-    ps.cedric = cedric
-    ps.caroline = caroline
+    ps.binome.connect(binome)
+    ps.cedric.connect(cedric)
+    ps.michel.connect(michel)
+    ps.caroline.connect(caroline)
 
 
 if __name__ == '__main__':

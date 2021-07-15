@@ -64,3 +64,5 @@ class Planete_Solidaire(StructuredNode):
     caroline = RelationshipFrom(Human4j, 'LEADER_ISG')
     michel = RelationshipFrom(Human4j, 'CONSULTANT_EPITA')
     cedric = RelationshipFrom(Human4j, 'CONSULTANT_EPITA')
+
+    name = StringProperty(unique_index=True)
