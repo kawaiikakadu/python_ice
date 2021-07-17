@@ -142,12 +142,12 @@ class Partenaire:
     None
     """
 
-    def __init__(self):
-        self.firstname = ''
-        self.lastname = ''
-        self.job = ''
-        self.email = ''
-        self.number = ''
+    def __init__(self, firstname='', lastname='', job='', email='', number=''):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.job = job
+        self.email = email
+        self.number = number
 
 
 class Project:
