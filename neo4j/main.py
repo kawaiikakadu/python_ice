@@ -8,6 +8,11 @@ db.set_connection('bolt://neo4j:password@localhost:7687')
 
 # clear all categories of nodes in the db
 def clear_db():
+    """
+    Function to clear all nodes in the db
+
+    :return: NONE
+    """
     humans = Human4j.nodes.all()
     for h in humans:
         h.delete()
@@ -31,8 +36,12 @@ def clear_db():
         misc.delete()
 
 
-# function that init the db with general data not in any ressources given
 def init_data():
+    """
+    Function to initialize data with data not in the given ressources
+
+    :return: NONE
+    """
     ps = Planete_Solidaire(name="Planète Solidaire").save()
 
     maya = Human4j(
