@@ -3,6 +3,13 @@ from retrieve_data_isg import *
 
 # function to parse the sheet in the clients excel
 def parse_partenaire(projects, sheet):
+    """
+    Function to parse the clients excel file
+
+    :param projects: list of the projects
+    :param sheet: excel sheet the clients are on
+    :return: list of the projects given in argument
+    """
     row = count_row(sheet)
     col = sheet.max_column
     for i in range(2, row + 1):
@@ -27,6 +34,11 @@ def parse_partenaire(projects, sheet):
 
 # function that calls the parsing function
 def parse_excel_partenaires(projects):
+    """
+    Function to parse the clients excel
+    :param projects: list of the projects
+    :return: list of the projects
+    """
     wb = openpyxl.load_workbook("ressources/2021 PLANETE SOLIDAIRE - CONTACTS PARTENAIRES.xlsx")
     sheet = wb.worksheets[0]
     parse_partenaire(projects, sheet)
