@@ -1,3 +1,6 @@
+from json import JSONEncoder
+
+
 class Human:
     """
     A class to represent a human (non-students from ISG).
@@ -29,6 +32,9 @@ class Human:
         self.number = number
         self.email = email
 
+class HumanEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
 
 class Binome:
     """
@@ -55,6 +61,10 @@ class Binome:
         self.human2 = Human()
         self.human1.school = "EPITA"
         self.human2.school = "EPITA"
+
+class BinomeEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
 
 
 class Pioupiou:
@@ -88,6 +98,10 @@ class Pioupiou:
         self.team = ''
         self.mission = ''
 
+class PioupiouEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
+
 
 class Sherpa:
     """
@@ -116,6 +130,10 @@ class Sherpa:
         self.human.school = "ISG"
         self.campus = ''
         self.mission = ''
+
+class SherpaEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
 
 
 class Partenaire:
@@ -149,6 +167,10 @@ class Partenaire:
         self.email = email
         self.number = number
 
+class PartenaireEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__
+
 
 class Project:
     """
@@ -180,3 +202,7 @@ class Project:
         self.partenaire = Partenaire()
         self.sherpas = []
         self.students = []
+
+class ProjectEncoder(JSONEncoder):
+    def default(self, o):
+        return o.__dict__

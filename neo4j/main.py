@@ -1,6 +1,7 @@
 from neo4j_class import *
 from retrieve_data_partenaires import *
 from neomodel import db, config
+from dockerize import *
 
 config.DATABASE_URL = 'bolt://neo4j:password@localhost:7687'
 db.set_connection('bolt://neo4j:password@localhost:7687')
@@ -103,6 +104,9 @@ if __name__ == '__main__':
 
     # complete each project info with data in the clients excel
     parse_excel_partenaires(p_list)
+
+    # dockerisation of parsed data on projects
+    elastic(p_list)
 
     # clear the db from any residual data
     clear_db()
