@@ -25,6 +25,7 @@ supprimer les tableaux secondaires car les informations qu'ils comportaient éta
 
 ### Lancement
 
+- Lancer le fichier script.sh pour initialiser le docker avec elasticsearch
 - Lancer la base de donnée Neo4j dans le Neo4j Browser
 - Compiler le fichier main.py
 - Admirer le résultat dans le Neo4j Browser
