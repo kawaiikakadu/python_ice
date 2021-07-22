@@ -13,15 +13,19 @@ Ils sont connectés aux sherpas, aux Pioupiou, et aux partenaires ainsi qu'à un
 Les fichiers que nous avons décidé de traiter sont le .csv où sont listés les chefs de projets et leurs binômes, le .xlsx où sont listés les étudiants, les projets et les sherpas et le .xlsx avec le contact des partenaires.
 Nous n'avons pas traité le .json délibérément car les informations que nous trouvons sur celui-ci peuvent sont les mêmes que dans le fichier "effectif_campus_clean.xlsx".
 
-Dans ce même fichié, nous avons décidé de nettoyer les feuilles comme ceci :
+Dans ce même fichier, nous avons décidé de nettoyer les feuilles comme ceci :
 dé-fusionner les cellules des tableaux principaux
 supprimer les tableaux secondaires car les informations qu'ils comportaient étaient incomplètes et non significatives. 
 
 ### Pré-requis
 
-- base de donnée neo4j
+- base de donnée neo4j configurée comme ceci : nom = neo4j, mot de passe = password.
+  Modifiable sur les lignes 6 et 7 du main.py :
+    config.DATABASE_URL = 'bolt://neo4j:password@localhost:7687'
+    db.set_connection('bolt://neo4j:password@localhost:7687')
 - neomodel
 - openpyxl
+- elasticsearch
 
 ### Lancement
 
@@ -42,8 +46,8 @@ supprimer les tableaux secondaires car les informations qu'ils comportaient éta
 
 ## Réalisé par
 
-* Mai-Linh LANNES
-* Alexandre UNG
-* Rémy DOUADi
+* Mai-Linh "kawaiikakadu" LANNES
+* Alexandre "alexungepita77" UNG
+* Rémy "doudou80" DOUADI
 
 
